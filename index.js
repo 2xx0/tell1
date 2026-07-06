@@ -35,14 +35,15 @@ function getRandomMessage() {
 async function sendTell(message) {
     const url = 'https://api.tellonym.me/tells/create';
 
-    const headers = {
-        'Content-Type': 'application/json;charset=utf-8',
-        'Accept': 'application/json',
-        'Tellonym-Client': 'ios:3.159.1:2691:26:iPhone12,1',
-        'Authorization': process.env.TELLONYM_TOKEN || 'Bearer YOUR_TOKEN_HERE',
-        'User-Agent': 'Tellonym/2691 CFNetwork/3860.200.71 Darwin/25.1.0',
-        'Accept-Language': 'ar',
-    };
+const headers = {
+    'Content-Type': 'application/json;charset=utf-8',
+    'Accept': 'application/json',
+    'Tellonym-Client': 'ios:3.159.1:2691:26:iPhone12,1',
+    'Authorization': process.env.TELLONYM_TOKEN,        // ← من Render
+    'User-Agent': 'Tellonym/2691 CFNetwork/3860.200.71 Darwin/25.1.0',
+    'Accept-Language': 'ar',
+    'Cookie': process.env.TELLONYM_COOKIE               // ← من Render
+};
 
     const body = {
         senderStatus: 0,
